@@ -1,0 +1,17 @@
+/* =========================================================
+   profile.css — customer/profile.php
+   ========================================================= */
+.form-card fieldset.fieldset-last { margin-bottom: 0; }
+
+.form-card .profile-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.btn.profile-history-btn {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}

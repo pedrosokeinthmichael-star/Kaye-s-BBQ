@@ -1,0 +1,82 @@
+/* =========================================================
+   cancel_order_modal.css — components/cancel_order_modal.php
+   
+   ========================================================= */
+#cancel-order-modal .cancel-order-box { max-width: 420px; }
+#cancel-order-modal .cancel-order-icon {
+  width: 52px; height: 52px; margin: 0 auto 14px;
+  border-radius: 50%; background: rgba(198, 75, 35, 0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ember, #c64b23);
+}
+#cancel-order-modal .cancel-order-icon svg { width: 26px; height: 26px; }
+#cancel-order-modal .cancel-order-text {
+  text-align: center; font-size: 15px; color: var(--ink, #2a211b); margin: 0 0 6px;
+}
+#cancel-order-modal .cancel-order-sub {
+  text-align: center; font-size: 13px; color: var(--ink-soft, #4a3d33); margin: 0 0 16px;
+}
+#cancel-order-modal .cancel-order-summary {
+  padding: 12px 14px; border-radius: 10px;
+  background: rgba(0, 0, 0, .04); border: 1px solid rgba(0, 0, 0, .07);
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-soft, #4a3d33);
+  overflow-wrap: anywhere;
+}
+#cancel-order-modal .cancel-order-error {
+  display: none; margin: 12px 0 0; font-size: 13px; color: var(--brick, #6e2a1c);
+  background: rgba(198, 75, 35, 0.07); border: 1px solid rgba(198, 75, 35, 0.22);
+  border-radius: 8px; padding: 9px 12px;
+}
+#cancel-order-modal .cancel-order-actions {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+#cancel-order-modal .btn-keep {
+  background: transparent; color: var(--ink, #2a211b); border-color: var(--line, rgba(42,33,27,.15));
+}
+#cancel-order-modal .btn-keep:hover { border-color: var(--mustard, #d9a441); }
+#cancel-order-modal .btn-danger { background: var(--brick, #6e2a1c); color: var(--cream, #f1e6d3); }
+#cancel-order-modal .btn-danger:hover { background: var(--ember, #c64b23); }
+
+#cancel-order-modal .cancel-order-box { max-width: 480px; }
+#cancel-order-modal .co-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+}
+#cancel-order-modal .co-date { font-size: 13px; color: var(--ink-soft, #4a3d33); }
+#cancel-order-modal .co-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+@media (max-width: 480px) { #cancel-order-modal .co-grid { grid-template-columns: 1fr; } }
+#cancel-order-modal .co-label {
+  font-family: var(--font-mono, monospace); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-soft, #4a3d33); margin-bottom: 3px;
+}
+#cancel-order-modal .co-text { font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+#cancel-order-modal .co-sub { font-size: 12.5px; color: var(--ink-soft, #4a3d33); overflow-wrap: anywhere; }
+#cancel-order-modal .co-card {
+  padding: 10px 14px; border-radius: 10px; margin-bottom: 12px;
+  background: rgba(0, 0, 0, .04); border: 1px solid rgba(0, 0, 0, .07);
+}
+#cancel-order-modal .co-card.co-notes { background: rgba(217, 164, 65, .14); border-color: rgba(217, 164, 65, .32); margin-bottom: 0; }
+#cancel-order-modal .co-items { display: flex; flex-direction: column; margin-bottom: 4px; }
+#cancel-order-modal .co-item {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center;
+  column-gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(42, 33, 27, .1);
+}
+#cancel-order-modal .co-item:last-child { border-bottom: 0; }
+#cancel-order-modal .co-item-main { display: flex; align-items: center; gap: 10px; min-width: 0; }
+#cancel-order-modal .co-thumb {
+  width: 40px; height: 40px; flex: 0 0 auto; object-fit: cover;
+  border-radius: 8px; border: 1px solid rgba(0, 0, 0, .1); background: rgba(0, 0, 0, .05);
+}
+#cancel-order-modal .co-item-name { font-weight: 600; font-size: 14px; overflow-wrap: anywhere; }
+#cancel-order-modal .co-item-each { font-size: 12px; color: var(--ink-soft, #4a3d33); margin-top: 1px; }
+#cancel-order-modal .co-item-qty { font-weight: 600; white-space: nowrap; color: var(--ink-soft, #4a3d33); }
+#cancel-order-modal .co-item-total { font-weight: 700; white-space: nowrap; text-align: right; min-width: 56px; }
+#cancel-order-modal .co-totals { border-top: 1px solid rgba(42, 33, 27, .15); padding-top: 8px; margin-bottom: 12px; }
+#cancel-order-modal .co-row { display: flex; justify-content: space-between; padding: 2px 0; font-size: 14px; color: var(--ink-soft, #4a3d33); }
+#cancel-order-modal .co-row.co-grand { font-size: 16px; font-weight: 700; color: var(--ink, #2a211b); margin-top: 3px; }
+#cancel-order-modal .cancel-order-warn {
+  text-align: center; font-size: 13px; color: var(--brick, #6e2a1c); margin: 14px 0 0;
+}
+
+/* -------- former inline styles -------- */
+#cancel-order-modal .co-label.co-label-items { margin-bottom: 2px; }

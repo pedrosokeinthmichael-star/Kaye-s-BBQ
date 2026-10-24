@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order History — Kaye's Barbeque</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 3C13 10 10 15 10 21c0 6 4.5 11 10 11s10-5 10-11c0-2.6-1-5-2.5-7 0 3-1.5 5-3 5.5.8-3 .3-7-2-10-1 3-3 5.5-5.5 7.5-1.7 1.3-2.5 3-2.5 5 0 3 2.2 5.5 5.5 5.5" stroke="#D9A441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-text">Kaye's<br>Barbeque<span>Smokehouse &amp; Grill</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="barbeques.html">Barbeques</a></li>
+      <li><a href="orders.html">Order</a></li>
+      <li><a href="history.html" class="active">Order History</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section style="padding-bottom:0;">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--ember);">Your Orders</div>
+    <h1 style="font-size:38px;margin-bottom:6px;">Order History</h1>
+    <p style="color:var(--ink-soft);max-width:60ch;">A look back at past orders. The list below is sample data for layout purposes — this page isn't connected to real orders yet.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="notice">
+      <strong>Note:</strong> Filtering and live order data aren't functional yet — the table below shows sample entries only.
+    </div>
+
+    <div class="history-toolbar">
+      <div class="filters">
+        <span class="chip active">All Orders</span>
+        <span class="chip">Delivered</span>
+        <span class="chip">Preparing</span>
+        <span class="chip">Cancelled</span>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Order #</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Type</th>
+            <th>Total</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="order-id">KB-10482</td>
+            <td>Jul 10, 2026</td>
+            <td>Beef Brisket ×2, Pit Beans, Cornbread</td>
+            <td>Pickup</td>
+            <td class="order-total">₱1,020</td>
+            <td><span class="status status-delivered">Delivered</span></td>
+          </tr>
+          <tr>
+            <td class="order-id">KB-10465</td>
+            <td>Jul 3, 2026</td>
+            <td>St. Louis Ribs, Vinegar Slaw, Cornbread</td>
+            <td>Dine-in</td>
+            <td class="order-total">₱550</td>
+            <td><span class="status status-delivered">Delivered</span></td>
+          </tr>
+          <tr>
+            <td class="order-id">KB-10439</td>
+            <td>Jun 27, 2026</td>
+            <td>Whole Hog Plate ×3, Smoked Mac &amp; Cheese</td>
+            <td>Delivery</td>
+            <td class="order-total">₱1,200</td>
+            <td><span class="status status-preparing">Preparing</span></td>
+          </tr>
+          <tr>
+            <td class="order-id">KB-10402</td>
+            <td>Jun 18, 2026</td>
+            <td>House Sausage Link ×4, Pit Beans ×2</td>
+            <td>Pickup</td>
+            <td class="order-total">₱1,240</td>
+            <td><span class="status status-delivered">Delivered</span></td>
+          </tr>
+          <tr>
+            <td class="order-id">KB-10388</td>
+            <td>Jun 9, 2026</td>
+            <td>Smoked Chicken Quarter ×2, Cornbread ×2</td>
+            <td>Dine-in</td>
+            <td class="order-total">₱720</td>
+            <td><span class="status status-cancelled">Cancelled</span></td>
+          </tr>
+          <tr>
+            <td class="order-id">KB-10355</td>
+            <td>May 30, 2026</td>
+            <td>Pulled Pork Shoulder, Vinegar Slaw, Cornbread</td>
+            <td>Pickup</td>
+            <td class="order-total">₱490</td>
+            <td><span class="status status-delivered">Delivered</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Kaye's Barbeque</h4>
+        <p>412 Pitmaster Row<br>Davao City, Philippines</p>
+        <p>Open Tue–Sun · 11am – 9pm</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="barbeques.html">Barbeques</a>
+        <a href="orders.html">Order</a>
+        <a href="history.html">Order History</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@kayesbbq.example</p>
+        <p>(082) 555-0143</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kaye's Barbeque. All rights reserved.</span>
+      <span>Smoked daily, served fresh.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

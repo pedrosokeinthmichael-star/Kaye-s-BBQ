@@ -1,0 +1,85 @@
+/* =========================================================
+   customer_common.css — bits shared by every customer page
+   (header/nav, cart-modal button, page headings, small helpers).
+   Load after css/styles.css.
+   ========================================================= */
+
+/* -------------------- Header / nav -------------------- */
+.nav-actions .nav-profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-actions .nav-profile-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line-light);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.nav-actions .nav-profile-icon.nav-profile-icon--current { border-color: var(--mustard); }
+
+.nav-actions .nav-customer-name {
+  color: var(--cream-dim, #cbb9a1);
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.nav-actions .nav-logout-form { display: inline; margin: 0; }
+.nav-actions .nav-logout-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.nav-actions .nav-notif-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line-light);
+  background: transparent;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 0;
+}
+.nav-actions .nav-notif-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ember, #C64B23);
+  border: 1.5px solid var(--bg-dark, #1B1512);
+}
+
+/* -------------------- Buttons -------------------- */
+.btn.btn-full { width: 100%; }
+.btn.btn-full-center { width: 100%; text-align: center; }
+
+/* -------------------- Item modal (menu + home) -------------------- */
+.item-modal-stock.item-modal-stock-line {
+  font-size: 13.5px;
+  margin: 4px 0 12px;
+}
+
+/* -------------------- Page headings -------------------- */
+section.section-flush-bottom { padding-bottom: 0; }
+.eyebrow.eyebrow-ember { color: var(--ember); }
+h1.page-title { font-size: 38px; margin-bottom: 6px; }
+p.page-intro { color: var(--ink-soft); max-width: 60ch; }
+
+/* -------------------- Misc helpers -------------------- */
+.container.container-center { text-align: center; }
+p.empty-note { color: var(--ink-soft); padding: 24px 0; }
+p.list-empty { color: var(--ink-soft); padding: 16px 0; }
+a.text-link { color: var(--brick); text-decoration: underline; }

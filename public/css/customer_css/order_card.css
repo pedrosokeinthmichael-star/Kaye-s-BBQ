@@ -1,0 +1,333 @@
+/* -------------------- Order card (history / tracking) -------------------- */
+.order-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff8ec;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.order-card:hover,
+.order-card:focus-visible {
+  border-color: var(--mustard);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(42, 33, 27, 0.1);
+  outline: none;
+}
+
+.order-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.order-card-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-card-id {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.order-card-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.order-card-items {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.order-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.order-card-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.order-card-type {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.order-card-total {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ember);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .order-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------- Order detail modal -------------------- */
+.order-modal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.order-modal-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-modal-meta-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+.order-modal-meta-value {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.order-modal-section + .order-modal-section {
+  margin-top: 18px;
+}
+
+.order-modal-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-modal-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13.5px;
+}
+
+.order-modal-detail-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+
+.order-modal-detail-value {
+  color: var(--ink);
+  text-align: right;
+  word-break: break-word;
+}
+
+.order-modal-notes {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+  font-style: italic;
+}
+
+#order-modal-items .cart-line {
+  grid-template-columns: 1fr auto;
+}
+
+.order-modal-line {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.order-modal-line:last-child {
+  border-bottom: none;
+}
+
+.order-modal-line-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cream, #fff8ec);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.order-modal-line-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-modal-line-thumb svg {
+  width: 22px;
+  height: 22px;
+}
+
+.order-modal-line-name {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.order-modal-line-price {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.order-modal-line-subtotal {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ember);
+  white-space: nowrap;
+}
+
+.order-modal-proof {
+  margin-top: 10px;
+}
+
+.order-modal-proof-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.order-modal-proof img {
+  max-width: 160px;
+  max-height: 160px;
+  border-radius: 8px;
+  border: 1px solid var(--line-light, var(--line));
+  object-fit: cover;
+  display: block;
+}
+
+.order-modal-totals .summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 4px 0;
+  color: var(--ink-soft);
+}
+
+.order-modal-totals .summary-line.total {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-top: 10px;
+  margin-top: 6px;
+  border-top: 1px solid var(--line);
+}
+/* -------------------- Cancel button on tracking cards -------------------- */
+.order-card-cancel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--brick);
+  background: transparent;
+  color: var(--brick);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.order-card-cancel:hover {
+  background: var(--brick);
+  color: var(--cream);
+}
+
+.order-card-cancel:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* -------------------- Add Payment (admin requested a balance) -------------------- */
+.order-card-actions { display: flex; align-items: center; gap: 8px; }
+
+.order-card-addpay {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--ember);
+  background: var(--ember);
+  color: #fff8ec;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.order-card-addpay:hover { background: var(--ember-bright, #e0602f); border-color: var(--ember-bright, #e0602f); }
+
+.order-card-payment-note {
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  background: rgba(198, 75, 35, 0.1);
+  border: 1px solid rgba(198, 75, 35, 0.25);
+  color: var(--brick);
+}
+.order-card-payment-note.is-sent {
+  background: rgba(84, 130, 53, 0.12);
+  border-color: rgba(84, 130, 53, 0.25);
+  color: #4a7a2e;
+}
+/* -------- Refunded orders -------- */
+.status-refund { background: rgba(26, 115, 193, 0.14); color: #1a73c1; }

@@ -1,0 +1,612 @@
+/* =========================================================
+   Kaye's Barbeque — Admin Portal
+   modal.css — the ONE stylesheet for every admin modal (shell, content,
+   forms, order/sale/verify/cancel/history modals). Used by:
+     - modals/add_item_modal.php
+     - modals/edit_item_modal.php
+     - modals/order_modal.php
+     - modals/cancel_modal.php
+   These rules used to be injected into <head> at runtime by
+   menus.js and orders.js (each carrying its own partial copy).
+   They're consolidated here as a single stylesheet instead —
+   menus.js and orders.js no longer inject any CSS.
+   Depends on custom properties from base.css.
+   ========================================================= */
+
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 18, 12, .55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+}
+.admin-modal-backdrop.open { opacity: 1; pointer-events: auto; }
+
+.admin-modal {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 540px;
+  width: 100%;
+  max-height: 86vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+  transform: translateY(10px) scale(.98);
+  transition: transform .15s ease;
+}
+.admin-modal-backdrop.open .admin-modal { transform: translateY(0) scale(1); }
+
+.admin-modal-sm { max-width: 400px; }
+
+.admin-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+.admin-modal-eyebrow {
+  font-family: var(--font-display, inherit);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ember, #c9622a);
+  margin-bottom: 2px;
+}
+
+.admin-modal-head h3 { margin: 0; font-size: 22px; color: #2b241d; }
+
+.admin-modal-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, .05);
+  color: #2b241d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.admin-modal-close:hover { background: rgba(0, 0, 0, .1); }
+.admin-modal-close svg { width: 15px; height: 15px; }
+
+.admin-modal-body { padding: 18px 22px 22px; }
+
+.admin-modal-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.admin-modal-placed { font-size: 12.5px; color: var(--ink-soft, #6b5c4d); }
+
+.admin-modal-section { margin-bottom: 16px; }
+
+.admin-modal-label {
+  font-family: var(--font-display, inherit);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-soft, #6b5c4d);
+  margin-bottom: 4px;
+}
+
+.admin-modal-text { font-size: 14.5px; color: #2b241d; line-height: 1.5; }
+.admin-modal-subtext { font-size: 13px; color: var(--ink-soft, #6b5c4d); margin-top: 2px; }
+
+.admin-modal-items { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.admin-modal-items td { padding: 7px 0; font-size: 14px; border-bottom: 1px solid rgba(0, 0, 0, .05); }
+.admin-modal-items tr:last-child td { border-bottom: none; }
+.admin-modal-item-qty { color: var(--ink-soft, #6b5c4d); padding: 0 10px; white-space: nowrap; }
+.admin-modal-item-price { text-align: right; white-space: nowrap; }
+
+.admin-modal-totals { border-top: 1px solid rgba(0, 0, 0, .08); margin-top: 6px; padding-top: 10px; }
+.admin-modal-totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--ink-soft, #6b5c4d);
+  padding: 3px 0;
+}
+.admin-modal-totals-grand { font-size: 16px; font-weight: 700; color: #2b241d; margin-top: 4px; }
+
+.admin-modal-confirm-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+.admin-modal-note { margin-top: 12px; padding: 10px 12px; border-radius: 10px; font-size: 13px; line-height: 1.5; }
+.admin-modal-note-warning { background: rgba(198, 75, 35, 0.1); border: 1px solid rgba(198, 75, 35, 0.25); color: var(--brick, #b23b2e); }
+.admin-modal-note-info { background: rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.08); color: var(--ink-soft, #6b5c4d); }
+
+/* -------------------- Item form layout (add / edit) -------------------- */
+/* Used by add_item_modal.php and edit_item_modal.php in place of the
+   generic .form-grid, so only genuinely related fields (Price + Stock)
+   sit side by side and everything else reads top to bottom. */
+
+.admin-form-section { margin-bottom: 18px; }
+.admin-form-section:last-of-type { margin-bottom: 0; }
+
+.admin-form-row { display: flex; gap: 14px; }
+.admin-form-row .field { flex: 1; min-width: 0; }
+
+.admin-form-locked .field input[readonly] {
+  background: rgba(0, 0, 0, .03);
+  color: var(--ink-soft, #6b5c4d);
+  cursor: default;
+}
+
+.admin-form-photo { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.admin-form-photo-preview { display: flex; align-items: center; gap: 10px; }
+.admin-form-photo-preview img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, .08);
+}
+
+.admin-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  margin-top: 2px;
+  border-top: 1px solid rgba(0, 0, 0, .06);
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 480px) {
+  .admin-modal-head { padding: 16px 16px 12px; }
+  .admin-modal-body { padding: 14px 16px 18px; }
+  .admin-form-row { flex-direction: column; gap: 0; }
+  .admin-form-footer { flex-direction: column; align-items: stretch; }
+}
+
+/* -------------------- Order details: ordered items list -------------------- */
+/* Own grid layout (name | qty | line total) so quantity and price always
+   show. Used by order_modal.php / orders.js (#order-modal-items). */
+.om-items { display: flex; flex-direction: column; margin-top: 6px; }
+.om-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .07);
+  background: transparent;
+}
+.om-item:last-child { border-bottom: 0; }
+.om-item-main { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.om-item-thumb {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, .08);
+}
+.om-item-thumb-empty { background: rgba(0, 0, 0, .05); display: inline-block; }
+.om-item-name { font-weight: 600; font-size: 14.5px; overflow-wrap: anywhere; }
+.om-item-each { font-size: 12px; color: var(--ink-soft, #6b5c4d); margin-top: 2px; }
+.om-item-qty { font-weight: 600; white-space: nowrap; color: var(--ink-soft, #6b5c4d); }
+.om-item-total { font-weight: 700; white-space: nowrap; text-align: right; min-width: 64px; }
+
+#order-modal-backdrop .admin-modal-body { overflow-x: hidden; }
+#order-modal-backdrop .admin-modal-text,
+#order-modal-backdrop .admin-modal-subtext { overflow-wrap: anywhere; }
+
+/* -------------------- Add Item modal: category picker + photo -------------------- */
+/* Used by add_item_modal.php. Selectors are prefixed with .admin-modal so they
+   win over the generic .field select / .field input rules in forms.css
+   regardless of stylesheet load order. */
+
+.admin-modal .category-picker { display: flex; align-items: stretch; gap: 8px; }
+
+.admin-modal .category-picker select {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 38px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a3d33' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+.admin-modal .category-picker .btn {
+  flex: 0 0 auto;
+  padding: 0 14px;
+  white-space: nowrap;
+}
+.admin-modal .category-picker .btn[aria-expanded="true"] {
+  border-color: var(--ember);
+  color: var(--ember);
+  background: rgba(198, 75, 35, .06);
+}
+
+.new-category-panel {
+  display: none;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(217, 164, 65, .12);
+  border: 1px solid rgba(217, 164, 65, .3);
+  border-left: 3px solid var(--mustard, #d9a441);
+}
+.new-category-panel.is-open { display: block; }
+
+.new-category-panel-label {
+  font-family: var(--font-display, inherit);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #a5791f;
+  margin-bottom: 8px;
+}
+.new-category-panel-row { display: flex; gap: 8px; align-items: stretch; }
+.new-category-panel-row input { flex: 1; min-width: 0; }
+.new-category-panel-row .btn { flex: 0 0 auto; padding: 0 16px; }
+.new-category-panel-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--ink-soft, #6b5c4d);
+}
+
+/* Photo picker: dashed drop-style box with a styled file button */
+.admin-form-photo {
+  padding: 12px 14px;
+  border: 1.5px dashed rgba(0, 0, 0, .18);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .02);
+}
+.admin-form-photo input[type="file"] {
+  font-size: 13px;
+  color: var(--ink-soft, #6b5c4d);
+  max-width: 100%;
+}
+.admin-form-photo input[type="file"]::file-selector-button {
+  font-family: var(--font-display, inherit);
+  font-size: 11.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  margin-right: 12px;
+  border-radius: var(--radius, 3px);
+  border: 1px solid var(--line, rgba(0, 0, 0, .15));
+  background: #fff;
+  color: var(--ink, #2a211b);
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease;
+}
+.admin-form-photo input[type="file"]::file-selector-button:hover {
+  border-color: var(--ember, #c64b23);
+  color: var(--ember, #c64b23);
+}
+
+/* Inline validation message under the form, only takes space when filled */
+.admin-modal .form-error:empty { display: none; }
+.admin-modal .form-error { display: block; margin-top: 12px; }
+
+@media (max-width: 480px) {
+  .new-category-panel-row { flex-direction: column; }
+  .new-category-panel-row .btn { padding: 10px 16px; }
+}
+
+
+/* -------------------- Pinned modal footer -------------------- */
+/* Keeps the action buttons (and availability toggle) visible while the
+   fields scroll, so short screens never hide "Add Item" / "Save". */
+.admin-modal .admin-form-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  margin: 0 -22px -22px;
+  padding: 14px 22px 18px;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, .08);
+  box-shadow: 0 -8px 12px -10px rgba(0, 0, 0, .18);
+}
+.admin-modal .form-error { margin-top: 0; margin-bottom: 12px; }
+
+/* A little tighter between fields so more fits before scrolling */
+.admin-form-section { margin-bottom: 14px; }
+
+@media (max-width: 480px) {
+  .admin-modal .admin-form-footer { margin: 0 -16px -18px; padding: 12px 16px 16px; }
+}
+
+/* =========================================================
+   Unified modal look -- applies to EVERY .admin-modal-backdrop:
+   add / edit item, update price, add stock, history, cancel,
+   order details, sale details, verify payment, delivery area.
+   Cream shell, mono labels, and each block is a soft rounded card.
+   Page-specific bits are scoped by id further down.
+   ========================================================= */
+.admin-modal-backdrop .admin-modal {
+  background: #fff8ec;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(24, 18, 12, .35);
+}
+
+.admin-modal-backdrop .admin-modal-head {
+  background: #fff8ec;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--line);
+  z-index: 3;
+}
+.admin-modal-backdrop .admin-modal-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  color: var(--ember);
+  margin-bottom: 6px;
+}
+.admin-modal-backdrop .admin-modal-head h3 {
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--ink);
+}
+.admin-modal-backdrop .admin-modal-close { width: 36px; height: 36px; background: #efe5d3; color: var(--ink); }
+.admin-modal-backdrop .admin-modal-close:hover { background: #e6d8bf; }
+
+.admin-modal-backdrop .admin-modal-body { padding: 16px 24px 24px; }
+.admin-modal-backdrop .admin-modal-status-row { margin-bottom: 14px; padding: 0 2px; }
+
+/* Mono labels */
+.admin-modal-backdrop .admin-modal-label,
+.admin-modal-backdrop .field label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.admin-modal-backdrop .admin-modal-label { margin-bottom: 6px; }
+.admin-modal-backdrop .admin-modal-text { font-size: 16px; color: var(--ink); line-height: 1.45; }
+.admin-modal-backdrop .admin-modal-subtext { font-size: 13.5px; color: var(--ink-soft); }
+
+/* Read-only detail blocks = cards */
+.admin-modal-backdrop .admin-modal-section,
+.admin-modal-backdrop .admin-modal-totals {
+  background: #f5ecde;
+  border: 1px solid rgba(42, 33, 27, .09);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 0 0 12px;
+}
+.admin-modal-backdrop .admin-modal-section:last-child,
+.admin-modal-backdrop .admin-modal-totals:last-child { margin-bottom: 0; }
+/* totals nested inside a section (sale details) stay flat */
+.admin-modal-backdrop .admin-modal-section .admin-modal-totals {
+  background: none; border: 0; border-radius: 0; padding: 0; margin: 10px 0 0;
+}
+.admin-modal-backdrop .admin-modal-totals-row { color: var(--ink-soft); }
+.admin-modal-backdrop .admin-modal-totals-grand {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(42, 33, 27, .18);
+}
+.admin-modal-backdrop .om-item { border-bottom-color: rgba(42, 33, 27, .09); }
+
+/* Form modals: locked fields sit in a card, footer matches the shell */
+.admin-modal-backdrop .admin-form-locked {
+  background: #f5ecde;
+  border: 1px solid rgba(42, 33, 27, .09);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.admin-modal-backdrop .admin-form-locked .field input[readonly] { background: rgba(255, 255, 255, .55); }
+.admin-modal-backdrop .admin-modal-confirm-actions { margin-top: 18px; }
+.admin-modal .admin-form-footer { background: #fff8ec; border-top-color: var(--line); }
+.admin-modal-backdrop .new-category-panel { border-radius: 12px; }
+.admin-modal-backdrop .admin-form-photo { background: #f5ecde; border-radius: 12px; }
+
+@media (max-width: 480px) {
+  .admin-modal-backdrop .admin-modal-head { padding: 18px 18px 14px; }
+  .admin-modal-backdrop .admin-modal-head h3 { font-size: 26px; }
+  .admin-modal-backdrop .admin-modal-body { padding: 14px 18px 20px; }
+}
+
+/* ---------- Order details (#order-modal-backdrop) ---------- */
+#order-modal-backdrop .admin-modal { max-width: 520px; }
+#order-modal-backdrop .admin-modal-head h3 { font-size: 34px; }
+#order-modal-backdrop #order-modal-gcash-wrap { background: #eceee6; border-color: rgba(42, 33, 27, .08); }
+
+#order-modal-backdrop .om-customer-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 4px 16px;
+}
+#order-modal-backdrop .om-customer-row .admin-modal-subtext { margin: 0 0 0 auto; text-align: right; }
+
+#order-modal-backdrop #order-modal-proof-link { display: inline-block; margin-top: 10px; }
+#order-modal-backdrop #order-modal-proof-img {
+  width: 160px; height: 160px; max-width: 100%; max-height: none; margin: 0;
+  object-fit: cover; border-radius: 12px; border: 1px solid rgba(42, 33, 27, .1);
+}
+#order-modal-backdrop #order-modal-extra-wrap { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(42, 33, 27, .1); }
+#order-modal-backdrop .om-extra-pay {
+  background: rgba(255, 255, 255, .55); border: 1px solid rgba(42, 33, 27, .08);
+  border-radius: 12px; padding: 10px 12px; margin-top: 8px;
+}
+#order-modal-backdrop .om-extra-head {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px;
+}
+#order-modal-backdrop .om-extra-proof img {
+  width: 110px; height: 110px; object-fit: cover; border-radius: 10px;
+  margin-top: 8px; border: 1px solid rgba(42, 33, 27, .1);
+}
+@media (max-width: 480px) { #order-modal-backdrop .admin-modal-head h3 { font-size: 28px; } }
+
+/* ---------- Verify payment (#verify-modal-backdrop) ----------
+   Its old inline style block set a few white backgrounds and an inline
+   style on the summary card; these win by specificity / !important. */
+#verify-modal-backdrop .admin-modal .admin-modal-totals {
+  margin: 0 0 12px !important;
+  padding: 14px 16px !important;
+  border: 1px solid rgba(42, 33, 27, .09) !important;
+}
+#verify-modal-backdrop .admin-modal .admin-modal-totals-row span:last-child { color: var(--ink); }
+#verify-modal-backdrop .admin-modal .vp-panel { background: #f5ecde; border-color: rgba(42, 33, 27, .09); border-radius: 14px; }
+#verify-modal-backdrop .admin-modal .vp-actions { background: #fff8ec; border-top-color: var(--line); }
+#verify-modal-backdrop .admin-modal .vp-proof { border-color: rgba(42, 33, 27, .12); border-radius: 12px; }
+
+/* Keep Add / Cancel buttons on one row, pushed right of the availability toggle */
+.admin-modal .admin-form-footer { flex-wrap: wrap; }
+.admin-modal .admin-form-footer .form-actions { flex-wrap: nowrap; margin-left: auto; }
+
+
+/* =========================================================
+   Hide scrollbars inside modals (content still scrolls with
+   the mouse wheel, touch, trackpad and keyboard).
+   ========================================================= */
+.admin-modal-backdrop,
+.admin-modal-backdrop .admin-modal,
+.admin-modal-backdrop .admin-modal-body,
+.admin-modal-backdrop textarea,
+.admin-modal-backdrop #order-modal-extra-list {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* old Edge / IE */
+}
+.admin-modal-backdrop::-webkit-scrollbar,
+.admin-modal-backdrop .admin-modal::-webkit-scrollbar,
+.admin-modal-backdrop .admin-modal-body::-webkit-scrollbar,
+.admin-modal-backdrop textarea::-webkit-scrollbar,
+.admin-modal-backdrop #order-modal-extra-list::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Edge */
+  width: 0;
+  height: 0;
+}
+
+
+/* =========================================================
+   Modal-specific styles moved out of the modal PHP files.
+   (cancel_modal.php, history_modal.php, verify_payment_modal.php
+   no longer carry inline style blocks.)
+   ========================================================= */
+
+/* ---------- Cancel order (from cancel_modal.php) ---------- */
+#cancel-modal-backdrop .cancel-note-field { margin-top: 14px; }
+#cancel-modal-backdrop .cancel-note-field textarea { min-height: 78px; }
+#cancel-modal-backdrop .cancel-note-meta {
+  display: flex; justify-content: space-between; gap: 10px;
+  margin-top: 4px; font-size: 12px; color: var(--ink-soft, #6b5c4d);
+}
+
+/* ---------- History details (from history_modal.php) ---------- */
+#history-modal-backdrop .hm-item { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+#history-modal-backdrop .hm-thumb {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, .08);
+}
+#history-modal-backdrop .hm-thumb-empty { background: rgba(0, 0, 0, .05); }
+
+/* ---------- Verify payment (from verify_payment_modal.php) ---------- */
+/* Keep scrolled-to panels clear of the sticky header and the pinned buttons. */
+#verify-modal-backdrop .admin-modal { scroll-padding-top: 76px; scroll-padding-bottom: 96px; }
+
+/* Order summary rows: long contact details wrap instead of squeezing the label. */
+#verify-modal-backdrop .admin-modal-totals-row { gap: 16px; align-items: baseline; }
+#verify-modal-backdrop .admin-modal-totals-row span:first-child { flex: 0 0 auto; }
+#verify-modal-backdrop .admin-modal-totals-row span:last-child { min-width: 0; text-align: right; overflow-wrap: anywhere; color: #2b241d; }
+#verify-modal-backdrop .admin-modal-totals-grand span:first-child { color: #2b241d; }
+
+/* Proof of payment */
+#verify-modal-backdrop .vp-proof { display: inline-block; margin-top: 8px; line-height: 0; border-radius: 10px; overflow: hidden; border: 1px solid rgba(26,115,193,.25); box-shadow: 0 1px 3px rgba(20,40,70,.12); }
+#verify-modal-backdrop .vp-proof img { max-width: 100%; max-height: 220px; object-fit: contain; display: block; background: #fff; }
+#verify-modal-backdrop .vp-hint { font-size: 12.5px; line-height: 1.5; color: var(--ink-soft, #6b5c4d); margin-top: 6px; }
+
+/* Amount received */
+#verify-modal-backdrop .vp-field { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,.07); }
+#verify-modal-backdrop .vp-field input { font-size: 16px; font-weight: 600; font-family: var(--font-mono, inherit); }
+#verify-modal-backdrop .vp-result { margin: 12px 0 0; font-size: 13.5px; font-weight: 500; }
+#verify-modal-backdrop .vp-result.is-ok { background: rgba(84,130,53,.12); border: 1px solid rgba(84,130,53,.28); color: #3f6a27; }
+
+/* Checkboxes */
+#verify-modal-backdrop .vp-check { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: #fff; border: 1px solid rgba(0,0,0,.1); font-size: 13.5px; line-height: 1.45; cursor: pointer; }
+#verify-modal-backdrop .vp-check input { margin-top: 2px; flex: 0 0 auto; width: 16px; height: 16px; accent-color: var(--ember, #c64b23); }
+#verify-modal-backdrop #vp-panel-match { background: rgba(84,130,53,.07); border-color: rgba(84,130,53,.25); }
+
+/* Request / refund panels: one tidy card each */
+#verify-modal-backdrop .vp-panel { margin-top: 14px; padding: 14px; border-radius: 12px; background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.08); }
+#verify-modal-backdrop .vp-panel > .admin-modal-label { margin-bottom: 8px; color: var(--ember, #c64b23); }
+#verify-modal-backdrop .vp-panel .field { margin: 0; }
+#verify-modal-backdrop .vp-panel textarea { min-height: 104px; font-size: 13.5px; line-height: 1.5; }
+#verify-modal-backdrop .vp-panel .vp-hint:not(.vp-status) { padding-top: 10px; margin-top: 12px; border-top: 1px dashed rgba(0,0,0,.12); }
+#verify-modal-backdrop .vp-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; padding: 4px 0; }
+
+/* Refund panels: who to pay, plus the admin's own proof */
+#verify-modal-backdrop .vp-row strong { text-align: right; overflow-wrap: anywhere; }
+#verify-modal-backdrop .vp-row .vp-copyable { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+#verify-modal-backdrop .vp-refund-details { display: grid; gap: 12px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,.12); }
+#verify-modal-backdrop .vp-refund-details .field { margin: 0; }
+#verify-modal-backdrop .vp-refund-details .admin-form-photo { background: #fff; flex-direction: column; align-items: flex-start; }
+#verify-modal-backdrop .vp-refund-details .admin-form-photo-preview img { width: auto; max-width: 100%; height: auto; max-height: 160px; }
+#verify-modal-backdrop .vp-refund-details .vp-hint { margin: 0; }
+
+/* Text / Email / Copy buttons: equal, easy to tap, wrap only if they must */
+#verify-modal-backdrop .vp-msg-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+#verify-modal-backdrop .vp-msg-actions .btn { flex: 1 1 auto; justify-content: center; padding: 9px 12px; background: #fff; white-space: nowrap; text-decoration: none; }
+
+/* Result of "Request Payment" */
+#verify-modal-backdrop .vp-status { margin-top: 12px; padding: 10px 12px; border-radius: 10px; font-weight: 500; background: rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.08); }
+#verify-modal-backdrop .vp-status.is-ok { background: rgba(84,130,53,.12); border-color: rgba(84,130,53,.28); color: #3f6a27; }
+#verify-modal-backdrop .vp-status.is-error { background: rgba(198,75,35,.1); border-color: rgba(198,75,35,.25); color: var(--brick, #b23b2e); }
+
+/* "Cancelling instead?" reminder */
+#verify-modal-backdrop #vp-cancel-hint { margin-top: 14px; padding: 10px 12px; border-radius: 10px; border-left: 3px solid var(--mustard, #d9a441); background: rgba(217,164,65,.12); color: #7a5a14; }
+#verify-modal-backdrop #vp-cancel-hint:empty { display: none; }
+
+/* Action buttons pinned to the bottom so they never scroll out of view */
+#verify-modal-backdrop .vp-actions { position: sticky; bottom: 0; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px -22px -22px; padding: 14px 22px 18px; background: #fff; border-top: 1px solid rgba(0,0,0,.08); box-shadow: 0 -8px 12px -10px rgba(0,0,0,.18); }
+#verify-modal-backdrop .vp-actions .btn { width: 100%; justify-content: center; text-align: center; padding: 12px 8px; white-space: nowrap; }
+#verify-modal-backdrop .vp-actions .btn:disabled { opacity: .45; cursor: not-allowed; }
+
+@media (max-width: 520px) {
+  #verify-modal-backdrop .vp-actions { margin: 18px -16px -18px; padding: 12px 16px 16px; grid-template-columns: 1fr 1fr; }
+  /* Primary action on top, full width; the other two share the row below */
+  #verify-modal-backdrop .vp-actions #vp-submit { grid-column: 1 / -1; order: -1; }
+}
+
+
+/* ---------- Request-payment confirmation (from verify_payment_modal.php) ---------- */
+#request-confirm-backdrop { z-index: 2100; }   /* sits above the Verify Payment modal */
+#request-confirm-backdrop .admin-modal-text { font-size: 15px; line-height: 1.55; }
+#request-confirm-backdrop .rc-icon {
+  width: 46px; height: 46px; margin-bottom: 12px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(84, 130, 53, .15); color: #4a7a2e;
+}
+#request-confirm-backdrop .rc-icon svg { width: 22px; height: 22px; }

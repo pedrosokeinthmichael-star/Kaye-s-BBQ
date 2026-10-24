@@ -1,0 +1,32 @@
+/* =========================================================
+   home.css — customer/index.php (Home page)
+   ========================================================= */
+.smoke-ring.smoke-ring-h1 { width: 60px; height: 60px; left: 35%; top: 60%; animation-delay: 0s; }
+.smoke-ring.smoke-ring-h2 { width: 40px; height: 40px; left: 55%; top: 70%; animation-delay: 2.3s; }
+.smoke-ring.smoke-ring-h3 { width: 80px; height: 80px; left: 25%; top: 50%; animation-delay: 4.6s; }
+
+/* "Hungry yet?" call-to-action */
+.kicker.kicker-spaced { margin-bottom: 10px; }
+h2.cta-title-lg { font-size: 32px; }
+p.cta-text-soft {
+  max-width: 52ch;
+  margin: 0 auto 28px;
+  color: var(--ink-soft);
+}
+.hero-actions.hero-actions-center { justify-content: center; }
+
+/* -------- Compact hero (overrides the large defaults in styles.css) -------- */
+.hero { padding: 34px 0 30px; }
+.hero-inner { gap: 28px; }
+.hero .eyebrow { font-size: 11px; letter-spacing: 0.22em; margin-bottom: 10px; }
+.hero h1 { font-size: 36px; line-height: 1.05; margin-bottom: 10px; }
+.hero h1 br { display: none; }               /* let the headline flow onto 2 lines */
+.hero-sub { font-size: 15px; margin-bottom: 18px; max-width: 52ch; }
+.hero-actions { gap: 10px; }
+.hero-figure { aspect-ratio: auto; height: 170px; padding: 10px; }
+.hero-figure > svg { width: auto; height: 100%; }
+@media (max-width: 780px) {
+  .hero { padding: 26px 0 24px; }
+  .hero h1 { font-size: 30px; }
+  .hero-figure { display: none; }
+}

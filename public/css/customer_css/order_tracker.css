@@ -1,0 +1,128 @@
+/* =========================================================
+   order_tracker_modal.css — components/order_tracker_modal.php
+   
+   ========================================================= */
+#tm-backdrop {
+  position: fixed; inset: 0; z-index: 2000;
+  display: none; align-items: center; justify-content: center;
+  padding: 20px; background: rgba(24, 18, 12, .6);
+}
+#tm-backdrop.open { display: flex; }
+#tm-backdrop .tm-box {
+  background: #fff8ec; color: var(--ink, #2a211b);
+  width: 100%; max-width: 520px; max-height: 88vh; overflow-y: auto;
+  border-radius: 14px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+  /* Hide the scrollbar but keep the modal scrollable (wheel / touch / keys). */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* old Edge / IE */
+}
+#tm-backdrop .tm-box::-webkit-scrollbar { display: none; }  /* Chrome, Safari, Edge */
+#tm-backdrop .tm-head {
+  position: sticky; top: 0; background: #fff8ec; z-index: 1;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+  padding: 18px 22px 12px; border-bottom: 1px solid rgba(42, 33, 27, .12);
+}
+#tm-backdrop .tm-eyebrow {
+  font-family: var(--font-mono, monospace); font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ember, #c64b23);
+}
+#tm-backdrop .tm-title { margin: 2px 0 0; font-size: 24px; }
+#tm-backdrop .tm-close {
+  flex: 0 0 auto; width: 32px; height: 32px; border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .07); font-size: 20px; line-height: 1; cursor: pointer; color: inherit;
+}
+#tm-backdrop .tm-close:hover { background: rgba(0, 0, 0, .14); }
+#tm-backdrop .tm-body { padding: 16px 22px 22px; }
+#tm-backdrop .tm-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+}
+#tm-backdrop .tm-date { font-size: 13px; color: var(--ink-soft, #4a3d33); }
+#tm-backdrop .tm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+@media (max-width: 480px) { #tm-backdrop .tm-grid { grid-template-columns: 1fr; } }
+#tm-backdrop .tm-label {
+  font-family: var(--font-mono, monospace); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-soft, #4a3d33); margin-bottom: 4px;
+}
+#tm-backdrop .tm-text { font-size: 14.5px; line-height: 1.5; overflow-wrap: anywhere; }
+#tm-backdrop .tm-sub { font-size: 13px; color: var(--ink-soft, #4a3d33); overflow-wrap: anywhere; }
+#tm-backdrop .tm-card {
+  padding: 12px 14px; border-radius: 10px; margin-bottom: 14px;
+  background: rgba(0, 0, 0, .04); border: 1px solid rgba(0, 0, 0, .07);
+}
+#tm-backdrop .tm-card.tm-gcash { background: rgba(26, 115, 193, .07); border-color: rgba(26, 115, 193, .22); }
+#tm-backdrop .tm-card.tm-notes { background: rgba(217, 164, 65, .14); border-color: rgba(217, 164, 65, .32); }
+#tm-backdrop .tm-proof { display: inline-block; margin-top: 6px; line-height: 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0, 0, 0, .12); }
+#tm-backdrop .tm-proof img { max-width: 160px; max-height: 160px; object-fit: cover; display: block; }
+#tm-backdrop .tm-items { display: flex; flex-direction: column; margin-bottom: 6px; }
+#tm-backdrop .tm-item {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center;
+  column-gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(42, 33, 27, .1);
+}
+#tm-backdrop .tm-item:last-child { border-bottom: 0; }
+#tm-backdrop .tm-item-main { display: flex; align-items: center; gap: 10px; min-width: 0; }
+#tm-backdrop .tm-thumb {
+  width: 42px; height: 42px; flex: 0 0 auto; object-fit: cover;
+  border-radius: 8px; border: 1px solid rgba(0, 0, 0, .1); background: rgba(0, 0, 0, .05);
+}
+#tm-backdrop .tm-item-name { font-weight: 600; overflow-wrap: anywhere; }
+#tm-backdrop .tm-item-each { font-size: 12px; color: var(--ink-soft, #4a3d33); margin-top: 2px; }
+#tm-backdrop .tm-item-qty { font-weight: 600; white-space: nowrap; color: var(--ink-soft, #4a3d33); }
+#tm-backdrop .tm-item-total { font-weight: 700; white-space: nowrap; text-align: right; min-width: 60px; }
+#tm-backdrop .tm-totals { border-top: 1px solid rgba(42, 33, 27, .15); padding-top: 10px; margin-bottom: 14px; }
+#tm-backdrop .tm-row { display: flex; justify-content: space-between; padding: 3px 0; font-size: 14px; color: var(--ink-soft, #4a3d33); }
+#tm-backdrop .tm-row.tm-grand { font-size: 17px; font-weight: 700; color: var(--ink, #2a211b); margin-top: 4px; }
+#tm-backdrop .tm-card.tm-addpay { background: rgba(198, 75, 35, .06); border-color: rgba(198, 75, 35, .25); border-left: 3px solid var(--ember, #c64b23); }
+#tm-backdrop .tm-addpay .form-input { width: 100%; }
+#tm-backdrop .tm-extra-item { margin-top: 8px; font-size: 13.5px; }
+#tm-backdrop .tm-error { display: none; margin: 8px 0 0; font-size: 13px; color: var(--brick, #6e2a1c); }
+#tm-backdrop .tm-empty { font-size: 13.5px; color: var(--ink-soft, #4a3d33); padding: 6px 0; }
+
+/* -------- former inline styles -------- */
+#tm-backdrop .tm-label.tm-label-items { margin-bottom: 2px; }
+#tm-backdrop .tm-label.tm-label-left { text-align: left; }
+#tm-backdrop .tm-card.tm-addpay.tm-addpay-last { margin-bottom: 0; }
+#tm-backdrop .tm-sub.tm-sub-spaced { margin-bottom: 10px; }
+
+#tm-backdrop .tm-qr-wrap { text-align: center; margin-bottom: 12px; }
+#tm-backdrop .tm-qr-box {
+  display: inline-block;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, .12);
+}
+#tm-backdrop .tm-qr-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  display: block;
+}
+#tm-backdrop .tm-qr-empty {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-align: center;
+  padding: 8px;
+}
+#tm-backdrop .tm-gcash-name { font-weight: 600; margin: 8px 0 2px; }
+#tm-backdrop .tm-gcash-number { color: var(--ink-soft); font-size: 14px; margin: 0; }
+
+#tm-backdrop .tm-addpay .form-input.tm-addpay-file { margin-top: 8px; }
+#tm-backdrop .tm-addpay-preview { margin-top: 10px; }
+#tm-backdrop .tm-addpay-preview-img {
+  max-width: 160px;
+  max-height: 160px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, .12);
+  object-fit: cover;
+}
+#tm-backdrop .btn.tm-addpay-submit {
+  width: 100%;
+  margin-top: 12px;
+  justify-content: center;
+}

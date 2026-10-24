@@ -1,0 +1,36 @@
+/* =========================================================
+   orders.css — customer/orders.php (Checkout + tracking)
+   ========================================================= */
+.order-item-thumb .order-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.btn.btn-place-order {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Track Your Order */
+#tracking-section { padding: 32px 0 72px; }
+h2.tracking-title { font-size: 26px; margin-bottom: 6px; }
+p.tracking-intro {
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 20px;
+}
+
+/* Minimum order notice (under the order summary) */
+.min-order-note {
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  background: rgba(217, 164, 65, .14);
+  border: 1px solid rgba(217, 164, 65, .32);
+  color: var(--cream, #f1e6d3);
+}
+.btn.btn-place-order:disabled { opacity: .5; cursor: not-allowed; }

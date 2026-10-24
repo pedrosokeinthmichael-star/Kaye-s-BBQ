@@ -1,0 +1,52 @@
+/* =========================================================
+   Kaye's Barbeque — Admin Portal
+   footer.css — site footer
+   Depends on custom properties from base.css.
+   ========================================================= */
+
+.site-footer {
+  background: var(--ink);
+  color: var(--cream-dim);
+  padding: 46px 0 28px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 30px;
+}
+
+.footer-grid h4 {
+  color: var(--mustard);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+.footer-grid p, .footer-grid a {
+  font-size: 14px;
+  color: var(--cream-dim);
+  margin: 0 0 8px 0;
+  display: block;
+}
+
+.footer-grid a:hover { color: var(--mustard); }
+
+.footer-bottom {
+  border-top: 1px solid var(--line-light);
+  padding-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--cream-dim);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}

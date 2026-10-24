@@ -1,0 +1,10 @@
+/* =========================================================
+   menu_card.css — components/menu_card.php
+   ========================================================= */
+.menu-card .menu-card-stock {
+  font-size: 12.5px;
+  margin-top: 4px;
+}
+.menu-card .menu-card-stock.is-soldout { color: var(--brick, #C64B23); }
+.menu-card .menu-card-stock.is-low     { color: #a5791f; }
+.menu-card .menu-card-stock.is-ok      { color: var(--ink-soft, #6b5c4d); }

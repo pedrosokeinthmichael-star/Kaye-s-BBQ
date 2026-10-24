@@ -1,0 +1,16 @@
+/* =========================================================
+   Kaye's Barbeque — Admin Portal
+   notices.css — inline success/error notice banners
+   Depends on custom properties from base.css.
+   ========================================================= */
+
+.notice {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  border: 1px solid transparent;
+}
+.notice-success { background: rgba(84, 130, 53, 0.12); color: #4a7a2e; border-color: rgba(84, 130, 53, 0.25); }
+.notice-error { background: rgba(198, 75, 35, 0.1); color: var(--brick); border-color: rgba(198, 75, 35, 0.25); }

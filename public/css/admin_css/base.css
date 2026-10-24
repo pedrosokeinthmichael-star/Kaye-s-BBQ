@@ -1,0 +1,112 @@
+/* =========================================================
+   Kaye's Barbeque — Admin Portal
+   base.css — variables, reset, global typography, container
+   Load this FIRST on every page: every other admin CSS file
+   depends on the custom properties (--ember, --font-display,
+   etc.) declared in :root here.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --charcoal: #1b1512;
+  --charcoal-soft: #241c17;
+  --ember: #c64b23;
+  --ember-bright: #e0602f;
+  --mustard: #d9a441;
+  --cream: #f1e6d3;
+  --cream-dim: #e6d8bf;
+  --brick: #6e2a1c;
+  --ink: #2a211b;
+  --ink-soft: #4a3d33;
+  --line: rgba(42, 33, 27, 0.15);
+  --line-light: rgba(241, 230, 211, 0.18);
+
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Libre Franklin', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5em 0;
+  color: var(--ink);
+}
+
+p { margin: 0 0 1em 0; }
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* -------------------- Grate divider -------------------- */
+.grate-divider {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0px,
+    var(--ink) 26px,
+    transparent 26px,
+    transparent 46px
+  );
+  opacity: 0.85;
+}
+
+/* -------------------- Eyebrow / intro -------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-bottom: 18px;
+}
+
+/* -------------------- Tag -------------------- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brick);
+  background: rgba(110, 42, 28, 0.09);
+  border-radius: 2px;
+  padding: 2px 7px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* -------------------- Section subtitles -------------------- */
+.section-lead {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin: -8px 0 22px;
+  max-width: 62ch;
+}

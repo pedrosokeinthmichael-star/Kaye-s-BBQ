@@ -1,0 +1,86 @@
+/* =========================================================
+   search.css — search bar on the Menu, Order (tracking) and
+   Order History pages. Behaviour lives in js/customer/search.js.
+   ========================================================= */
+.search-bar {
+  position: relative;
+  max-width: 420px;
+  margin: 0 0 20px;
+}
+
+.search-bar .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--ink-soft, #4a3d33);
+  pointer-events: none;
+}
+
+.search-bar input.search-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 11px 40px 11px 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.search-bar input.search-input::placeholder { color: var(--ink-soft, #6b5c4d); opacity: 0.8; }
+.search-bar input.search-input:focus {
+  outline: none;
+  border-color: var(--mustard, #d9a441);
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.25);
+}
+/* We draw our own clear button, so hide the browser's. */
+.search-bar input.search-input::-webkit-search-cancel-button,
+.search-bar input.search-input::-webkit-search-decoration { -webkit-appearance: none; display: none; }
+
+.search-bar .search-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft, #4a3d33);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+.search-bar .search-clear:hover { background: rgba(0, 0, 0, 0.07); color: var(--ember, #c64b23); }
+.search-bar .search-clear:focus-visible { outline: 2px solid var(--mustard, #d9a441); outline-offset: 1px; }
+.search-bar .search-clear[hidden] { display: none; }
+
+/* Hidden by a search (kept separate from the chip filters, which use inline display). */
+.search-hidden { display: none !important; }
+
+@media (max-width: 720px) {
+  .search-bar { max-width: none; }
+}

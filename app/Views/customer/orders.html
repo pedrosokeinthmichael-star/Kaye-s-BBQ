@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order — Kaye's Barbeque</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 3C13 10 10 15 10 21c0 6 4.5 11 10 11s10-5 10-11c0-2.6-1-5-2.5-7 0 3-1.5 5-3 5.5.8-3 .3-7-2-10-1 3-3 5.5-5.5 7.5-1.7 1.3-2.5 3-2.5 5 0 3 2.2 5.5 5.5 5.5" stroke="#D9A441" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-text">Kaye's<br>Barbeque<span>Smokehouse &amp; Grill</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="barbeques.html">Barbeques</a></li>
+      <li><a href="orders.html" class="active">Order</a></li>
+      <li><a href="history.html">Order History</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section style="padding-bottom:0;">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--ember);">Place an Order</div>
+    <h1 style="font-size:38px;margin-bottom:6px;">Build Your Plate</h1>
+    <p style="color:var(--ink-soft);max-width:60ch;">Fill in your details and pick what you'd like from the pit. This page is a preview of the order form — sending orders isn't wired up yet.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="notice">
+      <strong>Note:</strong> This order form is a visual preview only. Quantities, totals, and submission are not functional yet.
+    </div>
+
+    <div class="order-layout">
+
+      <!-- Order form -->
+      <div class="form-card">
+
+        <fieldset>
+          <legend>Contact Details</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="full-name">Full name</label>
+              <input type="text" id="full-name" name="full-name" placeholder="Juan Dela Cruz">
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX">
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Pickup Details</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="pickup-date">Pickup date</label>
+              <input type="date" id="pickup-date" name="pickup-date">
+            </div>
+            <div class="field">
+              <label for="pickup-time">Pickup time</label>
+              <input type="time" id="pickup-time" name="pickup-time">
+            </div>
+          </div>
+          <div class="field">
+            <label for="order-type">Order type</label>
+            <select id="order-type" name="order-type">
+              <option>Pickup</option>
+              <option>Dine-in</option>
+              <option>Delivery</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Smoked Meats</legend>
+          <div class="qty-row">
+            <div class="item-label">Beef Brisket <small>₱420 / plate</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">St. Louis Ribs <small>₱380 / plate</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">Pulled Pork Shoulder <small>₱320 / plate</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">Smoked Chicken Quarter <small>₱280 / plate</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">House Sausage Link <small>₱260 / plate</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Sides</legend>
+          <div class="qty-row">
+            <div class="item-label">Smoked Mac &amp; Cheese <small>₱120</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">Vinegar Slaw <small>₱90</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">Pit Beans <small>₱100</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+          <div class="qty-row">
+            <div class="item-label">Cornbread <small>₱80</small></div>
+            <input type="text" class="qty-input" value="0">
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Special Instructions</legend>
+          <div class="field">
+            <label for="notes">Notes for the pit crew</label>
+            <textarea id="notes" name="notes" placeholder="Sauce on the side, extra napkins, allergies, etc."></textarea>
+          </div>
+        </fieldset>
+
+      </div>
+
+      <!-- Order summary -->
+      <div class="summary-card">
+        <h3>Order Summary</h3>
+        <div class="summary-line"><span>Beef Brisket × 0</span><span>₱0</span></div>
+        <div class="summary-line"><span>St. Louis Ribs × 0</span><span>₱0</span></div>
+        <div class="summary-line"><span>Sides × 0</span><span>₱0</span></div>
+        <div class="summary-line"><span>Delivery fee</span><span>—</span></div>
+        <div class="summary-line total"><span>Estimated Total</span><span>₱0</span></div>
+        <button class="btn btn-primary" style="width:100%;margin-top:20px;" disabled>Place Order — Coming Soon</button>
+        <p style="font-size:12px;color:var(--cream-dim);margin:14px 0 0;">Ordering isn't live yet. This layout is a preview of what's coming.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Kaye's Barbeque</h4>
+        <p>412 Pitmaster Row<br>Davao City, Philippines</p>
+        <p>Open Tue–Sun · 11am – 9pm</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="barbeques.html">Barbeques</a>
+        <a href="orders.html">Order</a>
+        <a href="history.html">Order History</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@kayesbbq.example</p>
+        <p>(082) 555-0143</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kaye's Barbeque. All rights reserved.</span>
+      <span>Smoked daily, served fresh.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

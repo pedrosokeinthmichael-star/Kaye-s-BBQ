@@ -1,0 +1,120 @@
+/* =========================================================
+   Kaye's Barbeque — Admin Portal
+   profile.css — My Profile page layout
+   Page-specific: only admin/profile needs this file.
+   Depends on custom properties from base.css.
+   ========================================================= */
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.profile-summary-card {
+  background: #fff8ec;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 26px;
+  text-align: center;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--ember);
+  color: #fff8ec;
+}
+
+.profile-summary-name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.profile-summary-email {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.profile-summary-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mustard-dark, #8a6415);
+  margin-top: 10px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 22px 0 6px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.profile-stat-value {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--ink);
+}
+
+.profile-stat-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 3px;
+}
+
+.form-card {
+  background: #fff8ec;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.form-card fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 26px 0;
+}
+
+.form-card fieldset:last-of-type { margin-bottom: 18px; }
+
+.form-card legend {
+  font-family: var(--font-display);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--ember);
+  padding: 0 0 10px 0;
+  margin-bottom: 12px;
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-card .field { margin-bottom: 14px; }
+.form-card .field:last-child { margin-bottom: 0; }
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 1100px) {
+  .profile-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .profile-stats { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,24 @@
+/* =========================================================
+   barbeques.css — customer/barbeques.php (Menu page)
+   ========================================================= */
+section.menu-hero { padding: 60px 0 48px; }
+h1.menu-hero-title {
+  color: #F1E6D3;
+  font-size: 42px;
+  margin-bottom: 14px;
+}
+p.menu-hero-intro { color: #cbb9a1; }
+
+/* smoke rings over the grill banner */
+.smoke-ring.smoke-ring-b1 { width: 36px; height: 36px; left: 22%; top: 30%; animation-delay: 0.5s; }
+.smoke-ring.smoke-ring-b2 { width: 26px; height: 26px; left: 62%; top: 20%; animation-delay: 3s; }
+
+.category-head h3.category-title { border: none; padding: 0; }
+
+/* "Made your picks?" call-to-action */
+h2.cta-title { font-size: 28px; }
+p.cta-text {
+  color: #cbb9a1;
+  max-width: 50ch;
+  margin: 0 auto 24px;
+}

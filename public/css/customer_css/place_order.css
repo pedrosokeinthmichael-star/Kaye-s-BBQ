@@ -1,0 +1,98 @@
+/* =========================================================
+   place_order_modal.css — components/place_order_modal.php
+   
+   ========================================================= */
+/* Totals summary: styles.css colors .summary-line cream for the dark
+   page summary card, which is unreadable on this cream modal. */
+#place-order-modal .summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--ink, #2a211b);
+  border-bottom: 1px solid rgba(42, 33, 27, .15);
+}
+#place-order-modal .summary-line span:last-child {
+  font-family: var(--font-mono, monospace);
+  font-weight: 600;
+}
+#place-order-modal .summary-line.total {
+  margin-top: 10px;
+  padding-top: 14px;
+  border-bottom: none;
+  border-top: 2px solid rgba(42, 33, 27, .3);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink, #2a211b);
+}
+#place-order-modal .summary-line.total span:last-child {
+  color: var(--ember, #c64b23);
+  font-weight: 700;
+}
+#place-order-modal #place-order-delivery-fee {
+  color: var(--ink-soft, #4a3d33);
+}
+
+/* -------- former inline styles -------- */
+#place-order-modal .po-required { color: var(--brick, #C64B23); }
+
+#place-order-modal .po-field-error,
+#place-order-modal .delivery-field-error {
+  color: var(--brick, #C64B23);
+  font-size: 13px;
+  margin: 6px 0 0;
+}
+
+#place-order-modal .form-group.po-notes-group { margin-top: 16px; }
+#place-order-modal .order-section.po-section-last {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+#place-order-modal .po-qr-group { text-align: center; }
+#place-order-modal .form-label.po-label-left { text-align: left; }
+#place-order-modal .po-qr-box {
+  display: inline-block;
+  padding: 12px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--line-light);
+}
+#place-order-modal .po-qr-img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+}
+#place-order-modal .po-qr-empty {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-align: center;
+  padding: 8px;
+}
+#place-order-modal .po-gcash-name { font-weight: 600; margin: 10px 0 2px; }
+#place-order-modal .po-gcash-number { color: var(--ink-soft); font-size: 14px; margin: 0; }
+#place-order-modal .po-gcash-hint { color: var(--ink-soft); font-size: 13px; margin-top: 8px; }
+
+#place-order-modal .po-proof-preview { margin-top: 10px; }
+#place-order-modal .po-proof-img {
+  max-width: 160px;
+  max-height: 160px;
+  border-radius: 8px;
+  border: 1px solid var(--line-light);
+  object-fit: cover;
+}
+#place-order-modal .po-proof-error {
+  color: var(--brick, #C64B23);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+#place-order-modal .summary-line.total.po-total-line { margin-top: 6px; }
